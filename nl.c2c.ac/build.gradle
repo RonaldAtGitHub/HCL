@@ -1,0 +1,85 @@
+//other plugins
+plugins {
+  id "java-test-fixtures"
+}
+
+dependencies {
+  // add dependencies for the testFixtures source folder. These test fixtures contain all our shared test utilities
+
+  // add the extlib to the classpath.
+  testFixturesImplementation fileTree(include: ['**/*.jar'], dir: "${rootDir}/nl.c2c.ac/lib")
+  testFixturesImplementation 'org.assertj:assertj-core:3.24.2'
+
+  // Use API and not Implementation to make the dependencies visible to consumers when building
+  // add custom jars
+  testFixturesApi fileTree(include: ['**/*.jar'], dir: "${rootDir}/resources/dependency/cwcloud") // only used for Caseware-cloud right now
+  testFixturesApi fileTree(include: ['**/*.jar'], dir: "${rootDir}/resources/dependency/IntelliJD14/ibm")
+  testFixturesApi fileTree(include: ['**/*.jar'], dir: "${rootDir}/resources/dependency/IntelliJD14/ndext")
+  testFixturesApi fileTree(include: ['**/*.jar'], dir: "${rootDir}/resources/dependency/IntelliJD14/osgi")
+  testFixturesApi fileTree(include: ['**/*.jar'], dir: "${rootDir}/resources/dependency/IntelliJD14/xsp")
+
+  testFixturesApi 'org.junit.jupiter:junit-jupiter-params:5.10.1'
+  testFixturesApi 'org.junit.jupiter:junit-jupiter-api:5.10.1'
+
+  testFixturesApi 'org.mockito:mockito-inline:4.11.0'
+  testFixturesApi 'org.mockito:mockito-junit-jupiter:4.11.0'
+
+  testFixturesCompileOnly 'org.projectlombok:lombok:1.18.30'
+  testFixturesAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+  testFixturesAnnotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+}
+
+jar {
+  // logging dependencies here
+  from 'logsettings', {
+    into 'logsettings'
+  }
+  from 'lib/extlib/nl.c2c.ac.extlib.jar', {
+    into 'lib/extlib'
+  }
+
+  // also include WEB-INF inside jar
+  from 'WEB-INF', {
+    into 'WEB-INF'
+  }
+
+  duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+  doFirst {
+    manifest {
+      attributes(
+        '-exportcontents': '*;-noimport:=true',   //https://bnd.bndtools.org/chapters/825-instructions-ref.html
+        '-nouses': 'true',
+        '-nodefaultversion': 'true',
+        '-removeheaders': 'Bnd-LastModified,Created-By,Tool,Private-Package,Require-Capability',
+        'Bundle-Version': rootProject.auditCaseProp.acVersion,
+        'Bundle-Name': 'AuditCase core',
+        'Bundle-SymbolicName': 'nl.c2c.ac',
+        'Bundle-Activator': 'nl.c2c.ac.Activator',
+        'Bundle-ActivationPolicy': "lazy",
+        'Bundle-ClassPath': ".,\n" +
+          " lib/extlib/nl.c2c.ac.extlib.jar,\n" +
+          " logsettings/,\n" +
+          " src/main/resources/,\n" +
+          " META-INF/",  //because AcVersionProvider reads it here
+        'Bundle-Vendor': 'ChangetoComm.',
+        'Export-Package': '*',  //Export the complete fat jar here!
+        'Import-Package': "com.ibm.commons,\n" +
+          " com.ibm.commons.util.io.json,\n" +
+          " com.ibm.designer.runtime.extensions,\n" +
+          " com.ibm.domino.services,\n" +
+          " com.ibm.domino.xsp.module.nsf, \n" +
+          " com.ibm.jscript,\n" +
+          " com.ibm.jscript.std,\n" +
+          " org.eclipse.core.runtime,\n" +
+          " org.osgi.framework",
+        'Require-Bundle': "org.eclipse.osgi,com.ibm.domino.xsp.bootstrap,\n" +
+          " com.ibm.domino.osgi.core,\n" +
+          " com.ibm.notes.java.api,\n" +
+          " com.ibm.domino.xsp.adapter,\n" +
+          " com.ibm.xsp.designer,\n" +
+          " org.eclipse.osgi,\n" +
+          " com.ibm.domino.xsp.bridge.http;bundle-version=\"9.0.1\";resolution:=optional")
+    }
+  }
+}

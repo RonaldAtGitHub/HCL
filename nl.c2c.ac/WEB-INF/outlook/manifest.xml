@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="MailApp">
+  <Id>~guid~</Id>
+  <Version>~version~</Version>
+  <ProviderName>Change to Comm</ProviderName>
+  <DefaultLocale>nl-NL</DefaultLocale>
+  <DisplayName DefaultValue="AuditCase"/>
+  <Description DefaultValue="Verwerk e-mail via uw eigen AuditCase omgeving."/>
+  <IconUrl DefaultValue="~ac_url~/ac-resources/img/logo-32x32.png"/>
+  <HighResolutionIconUrl DefaultValue="~ac_url~/ac-resources/img/logo-64x64.png"/>
+  <SupportUrl DefaultValue="https://changetocomm.zendesk.com/"/>
+
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set MinVersion="1.3" Name="Mailbox"/>
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="~ac_url~/ac/api/outlook/outlook.html~cachebust~"/>
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadWriteMailbox</Permissions>
+  <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.8">
+        <bt:Set Name="Mailbox"/>
+      </bt:Sets>
+    </Requirements>
+    <Hosts>
+      <Host xsi:type="MailHost">
+        <DesktopFormFactor>
+
+          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="msgReadCmdGroup">
+                <Label resid="auditcase.Group"/>
+
+                <!-- AuditCase button -->
+                <Control id="acArchiveButton" xsi:type="Button">
+                  <Label resid="auditcase.Label"/>
+                  <Supertip>
+                    <Title resid="auditcase.Tip"/>
+                    <Description resid="auditcase.Label.Long"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image resid="icon-16" size="16"/>
+                    <bt:Image resid="icon-32" size="32"/>
+                    <bt:Image resid="icon-64" size="64"/>
+                    <bt:Image resid="icon-80" size="80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="auditcase.Url"/>
+                  </Action>
+                </Control>
+
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image DefaultValue="~ac_url~/ac-resources/img/logo-16x16.png" id="icon-16"/>
+        <bt:Image DefaultValue="~ac_url~/ac-resources/img/logo-32x32.png" id="icon-32"/>
+        <bt:Image DefaultValue="~ac_url~/ac-resources/img/logo-64x64.png" id="icon-64"/>
+        <bt:Image DefaultValue="~ac_url~/ac-resources/img/logo-80x80.png" id="icon-80"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url DefaultValue="~ac_url~/ac/api/outlook/outlook.html~cachebust~" id="auditcase.Url"/>
+
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String DefaultValue="AuditCase" id="auditcase.Group"/>
+        <bt:String DefaultValue="AuditCase" id="auditcase.Label"/>
+        <bt:String DefaultValue="E-mail verwerken via AuditCase" id="auditcase.Tip"/>
+
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String DefaultValue="E-mail verwerken via AuditCase" id="auditcase.Label.Long"/>
+      </bt:LongStrings>
+    </Resources>
+
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
+      <Hosts>
+        <Host xsi:type="MailHost">
+          <DesktopFormFactor>
+            <SupportsSharedFolders>true</SupportsSharedFolders>
+            <ExtensionPoint xsi:type="MessageReadCommandSurface">
+              <OfficeTab id="TabDefault">
+                <Group id="msgReadCmdGroup">
+                  <Label resid="auditcase.Group"/>
+
+                  <!-- AuditCase button -->
+                  <Control id="acArchiveButton" xsi:type="Button">
+                    <Label resid="auditcase.Label"/>
+                    <Supertip>
+                      <Title resid="auditcase.Tip"/>
+                      <Description resid="auditcase.Label.Long"/>
+                    </Supertip>
+                    <Icon>
+                      <bt:Image resid="icon-16" size="16"/>
+                      <bt:Image resid="icon-32" size="32"/>
+                      <bt:Image resid="icon-64" size="64"/>
+                      <bt:Image resid="icon-80" size="80"/>
+                    </Icon>
+                    <Action xsi:type="ShowTaskpane">
+                      <SourceLocation resid="auditcase.Url"/>
+                      <SupportsPinning>true</SupportsPinning>
+                    </Action>
+                  </Control>
+
+                </Group>
+              </OfficeTab>
+            </ExtensionPoint>
+          </DesktopFormFactor>
+        </Host>
+      </Hosts>
+      <Resources>
+        <bt:Images>
+          <bt:Image DefaultValue="~ac_url~/ac-resources/img/logo-16x16.png" id="icon-16"/>
+          <bt:Image DefaultValue="~ac_url~/ac-resources/img/logo-32x32.png" id="icon-32"/>
+          <bt:Image DefaultValue="~ac_url~/ac-resources/img/logo-64x64.png" id="icon-64"/>
+          <bt:Image DefaultValue="~ac_url~/ac-resources/img/logo-80x80.png" id="icon-80"/>
+        </bt:Images>
+        <bt:Urls>
+          <bt:Url DefaultValue="~ac_url~/ac/api/outlook/outlook.html~cachebust~" id="auditcase.Url"/>
+
+        </bt:Urls>
+        <bt:ShortStrings>
+          <bt:String DefaultValue="AuditCase" id="auditcase.Group"/>
+          <bt:String DefaultValue="AuditCase" id="auditcase.Label"/>
+          <bt:String DefaultValue="E-mail verwerken via AuditCase" id="auditcase.Tip"/>
+
+        </bt:ShortStrings>
+        <bt:LongStrings>
+          <bt:String DefaultValue="E-mail verwerken via AuditCase" id="auditcase.Label.Long"/>
+        </bt:LongStrings>
+      </Resources>
+
+    </VersionOverrides>
+  </VersionOverrides>
+
+</OfficeApp>

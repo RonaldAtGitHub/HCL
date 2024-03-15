@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalDependencies">
+    <plugin id="Lombook Plugin" />
+    <plugin id="com.intellij.guice" />
+    <plugin id="intellij.prettierJS" />
+    <plugin id="org.jetbrains.plugins.vue" />
+    <plugin id="org.mapstruct.intellij" />
+    <plugin id="org.sonarlint.idea" />
+    <plugin id="zielu.gittoolbox" />
+  </component>
+</project>

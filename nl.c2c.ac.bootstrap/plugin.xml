@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+  <!-- auto start and control AuditCase platform-->
+  <extension
+    point="com.ibm.commons.Extension">
+    <service
+      class="nl.c2c.ac.bootstrap.AutoStart"
+      type="com.ibm.xsp.adapter.serviceFactory">
+    </service>
+  </extension>
+
+</plugin>

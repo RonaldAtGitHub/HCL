@@ -1,0 +1,4 @@
+rootProject.name = 'AuditCase'
+include 'nl.c2c.ac'
+include 'nl.c2c.ac.api2'
+include 'nl.c2c.ac.bootstrap'

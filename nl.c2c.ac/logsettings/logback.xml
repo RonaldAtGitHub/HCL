@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration>
+
+<configuration scan="false">
+  <shutdownHook/>
+  <statusListener class="ch.qos.logback.core.status.NopStatusListener"/>
+  <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>ACC [%thread] %d{HH:mm:ss.SSS} %-5level - %msg%n</pattern>
+    </encoder>
+  </appender>
+  <appender name="Domino" class="nl.c2c.ac.logging.appender.db.DominoDbAppender">
+    <encoder>
+      <pattern>ACD [%thread] %d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+  <!-- CONSOLE logging can be done by setting up a logger with this logger name, this is mainly used in bootstrap code-->
+  <logger name="ToConsole" level="INFO" additivity="false">
+    <appender-ref ref="Console"/>
+  </logger>
+  <!-- JOBS are always logged to the database -->
+  <logger name="nl.c2c.ac" level="INFO" additivity="false">
+    <appender-ref ref="Domino"/>
+  </logger>
+  <!--API calls are only logged to the database in debug mode: use /admin/{level} to activate this -->
+  <logger name="nl.c2c.ac.api2" level="ERROR" additivity="false">
+    <appender-ref ref="Domino"/>
+  </logger>
+  <!-- logging not from Api of Tasks does not log to the database, so log them to the console -->
+  <root level="ERROR">
+    <appender-ref ref="Console"/>
+  </root>
+</configuration>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path=".idea/fileTemplates"/>
+	<classpathentry kind="src" path="buildSrc/src/main/java"/>
+	<classpathentry kind="src" path="buildSrc/src/test/java"/>
+	<classpathentry excluding="nl/c2c/ac/api2/injection/module/" kind="src" path="nl.c2c.ac.api2/src/main/java"/>
+	<classpathentry kind="src" path="nl.c2c.ac.api2/src/main/java/nl/c2c/ac/api2/injection/module"/>
+	<classpathentry kind="src" path="nl.c2c.ac.bootstrap/src/main/java"/>
+	<classpathentry excluding="nl/c2c/ac/connect/test/" kind="src" path="nl.c2c.ac.connect/src/test/java"/>
+	<classpathentry excluding="nl/c2c/ac/domino/document/core/|nl/c2c/ac/domino/document/dossier/|nl/c2c/ac/data/model/client/relation/person/|nl/c2c/ac/data/model/client/relation/|nl/c2c/ac/documentprocess/module/uc/actions/workflow/" kind="src" path="nl.c2c.ac/src/main/java"/>
+	<classpathentry excluding="person/" kind="src" path="nl.c2c.ac/src/main/java/nl/c2c/ac/data/model/client/relation"/>
+	<classpathentry kind="src" path="nl.c2c.ac/src/main/java/nl/c2c/ac/data/model/client/relation/person"/>
+	<classpathentry kind="src" path="nl.c2c.ac/src/main/java/nl/c2c/ac/domino/document/core"/>
+	<classpathentry kind="src" path="nl.c2c.ac/src/main/java/nl/c2c/ac/domino/document/dossier"/>
+	<classpathentry excluding="nl/c2c/ac/domino/data/test/" kind="src" path="nl.c2c.ac/src/test/java"/>
+	<classpathentry kind="src" path="nl.c2c.ac/src/test/java/nl/c2c/ac/domino/data/test"/>
+	<classpathentry kind="src" path="nl.c2c.ac/src/testFixtures/java"/>
+	<classpathentry kind="lib" path="buildSrc/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/javax.xml_1.3.4.v201005080400.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.apache.felix.gogo.command_0.10.0.v201209301215.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.apache.felix.gogo.runtime_0.10.0.v201209301036.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.apache.felix.scr_2.0.10.v20170501-2007.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.core.contenttype_3.6.0.v20170207-1037.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.core.jobs_3.9.2.v20171030-1027.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.core.runtime_3.13.0.v20170207-1030.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.app_1.3.400.v20150715-1528.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.common_3.9.0.v20170207-1454.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.ds_1.5.0.v20170307-1429.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.event_1.4.0.v20170105-1446.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.frameworkadmin_2.0.300.v20160504-1450.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.frameworkadmin.equinox_1.0.800.v20170524-1345.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.launcher_1.4.0.v20161219-1356.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.p2.artifact.repository_1.1.650.v20170928-1405.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.p2.core_2.4.101.v20170906-1259.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.p2.jarprocessor_1.0.500.v20160504-1450.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.p2.metadata_2.3.200.v20170511-1106.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.p2.metadata.repository_1.2.401.v20170906-1259.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.p2.publisher_1.4.200.v20170511-1216.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.p2.publisher.eclipse_1.2.201.v20170906-1259.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.p2.repository_2.3.301.v20170906-1259.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.p2.updatesite_1.0.601.v20170906-1259.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.preferences_3.7.0.v20170126-2132.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.registry_3.7.0.v20170222-1344.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.security_1.2.300.v20170505-1235.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.security.linux.x86_64_1.0.100.v20170504-1307.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.simpleconfigurator_1.2.0.v20170110-1705.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.simpleconfigurator.manipulator_2.0.300.v20170515-0721.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.equinox.weaving.hook_1.2.0.v20160929-1449.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.osgi_3.12.50.v20170928-1321.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.osgi.compatibility.state_1.1.0.v20170516-1513.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.osgi.services_3.6.0.v20170228-1906.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.eclipse.osgi.util_3.4.0.v20170111-1608.jar"/>
+	<classpathentry kind="lib" path="resources/eclipse/eclipseHome/eclipse/plugins/org.tukaani.xz_1.5.0.v20170111-1717.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

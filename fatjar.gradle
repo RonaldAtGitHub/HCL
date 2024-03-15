@@ -1,0 +1,35 @@
+task customFatJarBuild(type: Jar) {
+  exclude '*.pdf', 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA'
+  from {
+    configurations.runtimeClasspath
+      .filter { !(it.name =~ /nl\.c2c\.ac\.extlib\.jar/) } // do NOT include the extlib because this will create a circular dependency that will always trigger the jar task
+      .collect { it.isDirectory() ? it : zipTree(it) }
+  }
+  zip64 true
+
+  duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+  archiveBaseName.set("nl.c2c.ac.extlib")
+}
+
+task copyToLib(type: Copy) {
+  from "${buildDir}/libs/nl.c2c.ac.extlib.jar"
+  into "nl.c2c.ac/lib/extlib"
+
+  doLast {
+    println "finished copyToLib"
+  }
+}
+copyToLib.dependsOn(customFatJarBuild)
+copyToLib.mustRunAfter(customFatJarBuild)
+
+task customFatJarTask() {
+  group 'AuditCase'
+  description = "Creates an AuditCase fatjar"
+}
+customFatJarTask.dependsOn(copyToLib)
+customFatJarTask.mustRunAfter(copyToLib)
+
+// jar task should create fat jar
+jar.dependsOn(copyToLib)
+jar.dependsOn(customFatJarTask)

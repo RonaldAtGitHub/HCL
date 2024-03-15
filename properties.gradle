@@ -1,0 +1,17 @@
+import java.text.SimpleDateFormat
+
+/**
+ * General settings for the build
+ */
+static def buildTime() {
+  def df = new SimpleDateFormat("yyyyMM")
+  df.setTimeZone(TimeZone.getTimeZone("UTC"))
+  // don't add the hours and minutes when building so it can be cached.
+  // when building the updateSite we call the task acManifestQualifier to override this property and set the proper time.
+  return df.format(new Date()) + "000000"
+}
+
+ext {
+  acQualifier = buildTime() //-> do not use in manifest generation because it will prevent build cache
+
+}

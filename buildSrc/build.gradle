@@ -1,0 +1,56 @@
+plugins {
+  id 'java'
+
+  // this plugin add supports for annotation processing in the 'gradle eclipse/cleaneclipse' task
+  id "com.diffplug.eclipse.apt" version "3.43.0"
+
+  // this plugin will also apply the java plugin, add gradleApi() depency and testKit depency ( id 'java-library')
+  id 'java-gradle-plugin'
+
+  // make gradle-upgrade-interactive work... (install with npm i -g gradle-upgrade-interactive )
+  id "com.github.ben-manes.versions" version "0.50.0"
+
+}
+
+gradlePlugin {
+  plugins {
+    auditcasePlugin {
+      id = 'nl.c2c.ac.devops.auditcase'
+      implementationClass = 'nl.c2c.ac.devops.auditcase.AuditCasePlugin'
+    }
+  }
+}
+
+// custom options when we are compiling to Java
+tasks.withType(JavaCompile).configureEach {
+  it.sourceCompatibility = JavaVersion.VERSION_17
+  it.targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+  mavenCentral()
+}
+
+test {
+  useJUnitPlatform {
+    includeEngines 'junit-jupiter'
+    excludeEngines 'junit-vintage'
+  }
+}
+
+dependencies {
+  compileOnly 'org.projectlombok:lombok:1.18.30'
+  annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+  //to comunicate with github
+  implementation 'com.jcabi:jcabi-github:1.1.2'
+
+  //used in our implementations
+  implementation 'com.google.guava:guava:32.1.3-jre'
+
+  // Use JUnit test framework
+  testImplementation "org.junit.jupiter:junit-jupiter-api:5.10.1"
+  testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.10.1"
+  testImplementation 'org.mockito:mockito-all:2.0.2-beta'
+
+}

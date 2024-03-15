@@ -1,0 +1,111 @@
+configurations {
+  platformaux
+}
+
+platform {
+
+  featureProvider = 'ChangeToComm.'
+  featureId = 'AuditCase'
+  featureName = 'AuditCase'
+  featureVersion = rootProject.auditCaseProp.acVersion + "." + rootProject.auditCaseProp.acQualifier
+
+  categoryId = 'AuditCase'
+  categoryName = 'AuditCase'
+
+  generatePlatformFeature = true
+  useBndHashQualifiers = false
+  useFeatureHashQualifiers = false
+  extractPomInformation = false
+
+  // We should include ourself here!
+  bundle fileTree(include: ['**/*.jar'], dir: "${buildDir}/libs")
+
+  bnd {
+    version = rootProject.auditCaseProp.acVersion + "." + rootProject.auditCaseProp.acQualifier
+    symbolicName = 'nl.c2c.ac.bootstrap'
+    bundleName = 'AuditCase'
+
+    defaultQualifier rootProject.auditCaseProp.acQualifier
+  }
+}
+bundles.mustRunAfter project.rootProject.getTasksByName("jar", true) // make sure the bundle task is ran after jar tasks
+// when buildAuditCase is fired, we need to call updateSite task.
+project.rootProject.getTasksByName('buildAuditCase', false)[0].finalizedBy updateSite
+updateSite.mustRunAfter project.rootProject.getTasksByName('buildAuditCase', false)[0]
+
+task renameCategoryToSiteXML(type: Copy) {
+  from('build/category.xml')
+  include 'category.xml'
+  destinationDir file('build/sitexml')
+  rename 'category.xml', "site.xml"
+
+  mustRunAfter updateSite
+}
+updateSite.finalizedBy renameCategoryToSiteXML
+
+task makeUpdateSitezip(type: Zip) {
+  doFirst {
+    archiveBaseName.set("auditcasev" + rootProject.auditCaseProp.acVersionZip + "." + rootProject.auditCaseProp.acQualifier)
+  }
+
+  mustRunAfter renameCategoryToSiteXML
+
+  from('build') {
+    include('features/*.jar')
+    include('plugins/*.jar')
+  }
+
+  from('build/sitexml') {
+    include('site.xml')
+    into ''
+  }
+}
+renameCategoryToSiteXML.finalizedBy makeUpdateSitezip
+
+jar {
+
+  // include plugin.xml here directly in jar
+  from 'plugin.xml', {
+    into '/'
+  }
+
+  duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+  doFirst {
+    manifest {
+      attributes(
+        '-exportcontents': '*;-noimport:=true',
+        '-nouses': 'true',
+        '-removeheaders': 'Bnd-LastModified,Bundle-Name,Created-By,Tool,Private-Package,Require-Capability',
+        'Bundle-Version': rootProject.auditCaseProp.acVersion,
+        'Bundle-SymbolicName': project.name + ";singleton:=true",
+        'Bundle-Name': 'AuditCase bootstrap',
+        'Bundle-Activator': 'nl.c2c.ac.bootstrap.Activator',
+        'Bundle-ActivationPolicy': "lazy",
+        'Bundle-ClassPath': ".",
+        'Bundle-Vendor': 'ChangetoComm.',
+        'Import-Package': "com.ibm.designer.runtime.domino.adapter,\n" +
+          " com.ibm.designer.runtime.domino.bootstrap.adapter,\n" +
+          " javax.servlet;version=\"2.5.0\",\n" +
+          " org.eclipse.core.runtime;version=\"3.4.0\",\n" +
+          " org.osgi.framework",
+        'Require-Bundle': "com.ibm.pvc.servlet;bundle-version=\"2.5.0\",\n" +
+          " org.eclipse.osgi,\n" +
+          " nl.c2c.ac;bundle-version=\"" + rootProject.auditCaseProp.acBundle + "\",\n" +
+          " nl.c2c.ac.api2;bundle-version=\"" + rootProject.auditCaseProp.acBundle + "\",\n" +
+          " org.eclipse.equinox.http.servlet;bundle-version=\"1.0.100\",\n" +
+          " org.eclipse.equinox.http.registry;bundle-version=\"1.0.100\""
+      )
+    }
+  }
+
+}
+
+// Direct dependencies for this project (do not mix platformaux and compileOnly together!)
+dependencies {
+  platformaux project(':nl.c2c.ac')
+  platformaux project(':nl.c2c.ac.api2')
+
+  compileOnly project(':nl.c2c.ac')
+  compileOnly project(':nl.c2c.ac.api2')
+}

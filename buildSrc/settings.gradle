@@ -1,0 +1,7 @@
+/*
+ * Always add a settings.gradle to the root directory of your build to avoid the initial performance impact. 
+  * This recommendation applies to single project builds as well as multi-project builds. 
+  * The file can either be empty or define the desired name of the project.
+ */
+
+rootProject.name = 'buildSrc'
