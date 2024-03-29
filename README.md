@@ -38,6 +38,11 @@ We have two issues at this moment since we upgraded to Domino 14 and using java 
    We are using com.ibm.pvc.webcontainer.application here.
 
 
+## Solutions
+Is this a possible solution?
+https://github.com/OpenNTF/org.openntf.xsp.jakartaee/blob/develop/eclipse/bundles/org.openntf.xsp.jakarta.servlet/src/org/openntf/xsp/jakarta/servlet/webapp/JakartaServletFacade.java
+
+
 HCL Domino is calling the servlet with the following code:
 
 This works with
