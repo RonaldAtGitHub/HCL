@@ -19,6 +19,8 @@ The pde.launch.ini file is generated with the Xpage SDK plugin in eclipse (https
 We use gradle buildAuditCase to build an update site.
 The update site is saved in nl.c2c.ac.bootstrap\build\distributions and is installed in the updatesite.nsf.
 
+To make it work on a clean windows machine we needed to set ECLIPSE_HOME in the gradle.properties file.
+
 ## install
 
 After installing the bundle there is an /ac/api/test end-point available displaying the text "test"
