@@ -15,10 +15,6 @@ jar {
     into '/'
   }
 
-  //include hashes config  directly in jar
-  from 'CSP-hashes.json', {
-    into '/'
-  }
 
   duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
