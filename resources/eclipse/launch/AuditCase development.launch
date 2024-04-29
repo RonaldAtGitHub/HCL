@@ -27,11 +27,9 @@
     <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-os ${target.os} -ws ${target.ws} -arch ${target.arch} -nl ${target.nl} -consoleLog -consoleLog -console -pluginCustomization &quot;${domino_rcp_target}/../plugin_customization.ini&quot;"/>
     <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.pde.ui.workbenchClasspathProvider"/>
     <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Declipse.registry.nulltoken=true&#13;&#10;-Dosgi.splashPath=platform:/base/../shared/eclipse/plugins/com.ibm.notes.branding&#13;&#10;-Djava.util.logging.config.class=com.ibm.rcp.core.internal.logger.boot.LoggerConfig&#13;&#10;-Dosgi.framework.extensions=com.ibm.rcp.core.logger.frameworkhook&#13;&#10;-Dcom.ibm.pvc.webcontainer.port=0&#13;&#10;-Djava.protocol.handler.pkgs=com.ibm.net.ssl.www.protocol&#13;&#10;-Dosgi.hook.configurators.exclude=org.eclipse.core.runtime.internal.adaptor.EclipseLogHook,com.ibm.jxesupport.CDSHookConfigurator&#13;&#10;&quot;-Xbootclasspath/a:${domino_rcp_base}/rcpbootcp.jar&quot;&#13;&#10;-Xss512K&#13;&#10;-Xms128m&#13;&#10;-Xmx1024m&#13;&#10;&quot;-Drcp.data=${domino_rcp_data}&quot;&#13;&#10;&quot;-Drcp.home=${domino_rcp_target}/../..&quot;&#13;&#10;&quot;-Djava.security.policy=${domino_rcp_target}/../../../java.policy&quot; -Declipse.ignoreApp=true -Dosgi.noShutdown=true"/>
-    <stringAttribute key="osgi_framework_id" value="com.ibm.domino.osgi.debug.framework"/>
     <stringAttribute key="pde.version" value="3.3"/>
     <setAttribute key="selected_target_bundles"/>
     <setAttribute key="selected_workspace_bundles">
-        <setEntry value="nl.c2c.ac.api2@default:default"/>
         <setEntry value="nl.c2c.ac.bootstrap@default:default"/>
         <setEntry value="nl.c2c.ac@default:default"/>
     </setAttribute>
