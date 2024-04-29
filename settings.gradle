@@ -1,3 +1,15 @@
+plugins {
+  id 'com.gradle.enterprise' version '3.15.1'
+}
+
+gradleEnterprise { // configuration for the gradle scan builds
+  buildScan {
+    // automatically agree to the gradle ToS when running a build with --scan
+    termsOfServiceUrl = "https://gradle.com/terms-of-service"
+    termsOfServiceAgree = "yes"
+  }
+}
+
 rootProject.name = 'AuditCase'
 include 'nl.c2c.ac'
 include 'nl.c2c.ac.api2'
