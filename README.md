@@ -19,9 +19,11 @@ In order to build this project follow these steps:
    1. Make sure you have the Xpage SDK plugin installed in eclipse.
       1. Download the plugin from [OpenNTF](https://www.openntf.org/main.nsf/project.xsp?r=project/XPages%20SDK%20for%20Eclipse%20RCP/releases/FFD60C3A085D3553862585E700563AE6)
    2. Within the `Target Platform` settings, add the `XPages Domino Plugin Target`, by pressing "Add" and then "Template > Domino Install target".
-   3. Reload this target platform, and make sure there are plugins available inside the locations tab (At the bottom).
-   4. Inside the `Run Configurations` make sure that the 3 bundles are selected correctly.
-   5. Run the configuration `AuditCase Development` then a `pde.launch.ini` file is generated in the domino\workspace folder to redirect the development to the class files.
+   3. Set java compiler to 17 for domino 14.
+   4. Enable annotation processing for the project.
+   5. Reload this target platform, and make sure there are plugins available inside the locations tab (At the bottom).
+   6. Inside the `Run Configurations` make sure that the 3 bundles are selected correctly.
+   7. Run the configuration `AuditCase Development` then a `pde.launch.ini` file is generated in the domino\workspace folder to redirect the development to the class files.
 4. Run the gradle task `buildAuditCase` this will also build an update site inside the `nl.c2c.ac.bootstrap\build\distributions` folder that we are using for development, but we do not need this for this project.
 5. Start the Domino 14 server.
    1. Make sure the bundles are loaded correctly to ensure the next step will work without any issues.
