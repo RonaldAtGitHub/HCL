@@ -126,7 +126,9 @@ nl.c2c.ac.updatesite/build.properties
 /**/features/
 !/**/ckeditor/plugins/
 !/**/resources/eclipse/eclipseHome/eclipse/plugins/
-!/resources/eclipse/eclipseHome/eclipse/configuration/
+/resources/eclipse/eclipseHome/eclipse/configuration/org.eclipse.core.runtime
+/resources/eclipse/eclipseHome/eclipse/configuration/org.eclipse.equinox.app
+/resources/eclipse/eclipseHome/eclipse/configuration/org.eclipse.osgi
 !/resources/eclipse/eclipseHome/eclipse/configuration/config.ini
 !/resources/eclipse/eclipseHome/configuration/org.eclipse.equinox.simpleconfigurator/bundles.info
 /resources/eclipse/eclipseHome/eclipse/p2/
