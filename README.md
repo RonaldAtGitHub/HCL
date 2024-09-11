@@ -9,6 +9,9 @@ in the domino data folder `domino\workspace\applications`.
 - To make it work on a clean windows machine we needed to set ECLIPSE_HOME in the windows environment settings, but it should work without this. The
 - IntelliJ, Eclipse and the Domino server must be running on the same (development) machine to make this work.
 
+## Movies
+In the folder /movies we added some movies to share our configuration
+
 ## Build steps
 
 In order to build this project follow these steps:
