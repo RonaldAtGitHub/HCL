@@ -55,6 +55,11 @@ We have two issues at this moment while upgrading to Domino 14 and using java 17
    1. Issue ticket: CS0491973
 
 
+## Solutions
+Is this a possible solution?
+https://github.com/OpenNTF/org.openntf.xsp.jakartaee/blob/develop/eclipse/bundles/org.openntf.xsp.jakarta.servlet/src/org/openntf/xsp/jakarta/servlet/webapp/JakartaServletFacade.java
+
+
 HCL Domino is calling the servlet with the following code:
 
 This works with
